@@ -90,4 +90,20 @@ console.log(capitalizeFirst('test', true));
 console.log(trimAndUppercase('  hello  '));       
 console.log(trimAndUppercase('  hello  ', true)); 
 console.log(trimAndUppercase('WORLD'));      
-console.log(trimAndUppercase('  world  ', false)); 
+console.log(trimAndUppercase('  world  ', false));
+
+function getFirstElement<T>(arr: T[]): T | undefined {
+    return arr[0];
+}
+
+const numbers = [1, 2, 3];
+const firstNumber = getFirstElement(numbers);
+console.log(firstNumber);
+
+const strings = ['a', 'b', 'c'];
+const firstString = getFirstElement(strings);
+console.log(firstString);
+
+const empty: number[] = [];
+const firstEmpty = getFirstElement(empty);
+console.log(firstEmpty);
