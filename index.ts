@@ -8,6 +8,7 @@ interface User {
 function createUser(id: number, name: string, email?: string, isActive: boolean = true): User {
     return { id, name, email, isActive};
 }
+
 type Genre = 'fiction' | 'non-fiction';
 
 interface Book {
@@ -26,4 +27,19 @@ const book1: Book = {
     author: 'Haruki Murakami',
     genre: 'non-fiction',
 };
+
 console.log(creatBook(book1));
+
+function calculateArea(shape: 'circle', radius: number): number;
+function calculateArea(shape: 'square', side: number): number;
+
+function calculateArea(shape: 'circle' | 'square', param: number): number{
+    if (shape === 'circle') {
+        return Math.PI * param * param;
+    } else {
+        return param * param;
+    }
+}
+
+console.log(calculateArea('circle', 5));
+console.log(calculateArea('square', 4));
