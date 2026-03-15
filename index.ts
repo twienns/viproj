@@ -107,3 +107,33 @@ console.log(firstString);
 const empty: number[] = [];
 const firstEmpty = getFirstElement(empty);
 console.log(firstEmpty);
+
+interface HasId {
+    id: number;
+}
+
+function findById<T extends HasId>(items: T[], id: number): T | undefined {
+    return items.find(item => item.id === id);
+}
+
+interface User1 extends HasId {
+    name: string;
+}
+
+interface Product extends HasId {
+    title: string;
+    price: number;
+}
+
+const users: User1[] = [
+  { id: 1, name: 'Roma' },
+  { id: 2, name: 'Taya' }
+];
+const products: Product[] = [
+  { id: 101, title: 'Laptop', price: 999 },
+  { id: 102, title: 'Mouse', price: 25 }
+];
+
+console.log(findById(users, 1));    
+console.log(findById(users, 3));
+console.log(findById(products, 102));
