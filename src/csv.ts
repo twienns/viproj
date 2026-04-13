@@ -13,7 +13,6 @@ export function csvToJSON(input: string[], delimiter: string): object[] {
     const obj: Record<string, any> = {};
     for (let j = 0; j < headers.length; j++) {
       let value: any = values[j];
-      // Преобразуем число, если возможно
       if (!isNaN(Number(value)) && value !== '') {
         value = Number(value);
       }
