@@ -1,8 +1,16 @@
-export type Transform<T> = (data: T[]) => T[];
 
-export type Group<T, K extends keyof T> = {
-  key: T[K];
-  items: T[];
+export type DeepReadonly<T> = {
+  readonly [P in keyof T]: T[P] extends object
+    ? T[P] extends Function
+      ? T[P]
+      : DeepReadonly<T[P]>
+    : T[P];
 };
 
-export type GroupTransform<T, K extends keyof T> = (groups: Group<T, K>[]) => Group<T, K>[];
+export type PickedByType<T, U> = {
+  [P in keyof T as T[P] extends U ? P : never]: T[P];
+};
+
+export type EventHandlers<T extends Record<string, any>> = {
+  [K in keyof T as `on${Capitalize<string & K>}`]: (payload: T[K]) => void;
+};
