@@ -1,6 +1,3 @@
-// Этот файл проверяется только компилятором TypeScript (tsc --noEmit)
-// Он не должен обрабатываться Vitest.
-
 import { query } from '../src/query.js';
 
 type User = {
@@ -11,7 +8,7 @@ type User = {
   city: string;
 };
 
-// Правильная цепочка (не должна вызывать ошибок типов)
+
 const correct = query<User>()
   .where('name', 'Иван')
   .groupBy('city')
@@ -19,7 +16,6 @@ const correct = query<User>()
   .sort('key')
   .run([]);
 
-// Ошибочные цепочки – ожидаем ошибки компиляции
 
 // @ts-expect-error: where недоступен после groupBy
 query<User>().groupBy('city').where('name', 'Иван');

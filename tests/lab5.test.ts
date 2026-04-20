@@ -41,7 +41,7 @@ describe('Лабораторная работа №5 (поведение)', () =
   it('sort сортирует группы (после having)', () => {
     const res = query<User>()
       .groupBy('city')
-      .having(() => true) // фиктивный having, чтобы получить HavingBuilder
+      .having(() => true) 
       .sort('key')
       .run(users);
     const keys = res.map(g => g.key);
